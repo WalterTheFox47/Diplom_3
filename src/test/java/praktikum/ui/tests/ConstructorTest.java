@@ -34,20 +34,20 @@ public class ConstructorTest {
     @DisplayName("Switch to Buns tab")
     public void switchToBunsTabTest() {
         mainPage.clickBunsTab();
-        assertTrue("Buns section should be visible", mainPage.isSectionVisible("Булки"));
+        assertTrue("Buns tab should be active", mainPage.isBunsTabActive());
     }
 
     @Test
     @DisplayName("Switch to Sauces tab")
     public void switchToSaucesTabTest() {
         mainPage.clickSaucesTab();
-        assertTrue("Sauces section should be visible", mainPage.isSectionVisible("Соусы"));
+        assertTrue("Sauces tab should be active", mainPage.isSaucesTabActive());
     }
 
     @Test
     @DisplayName("Switch to Fillings tab")
     public void switchToFillingsTabTest() {
         mainPage.clickFillingsTab();
-        assertTrue("Fillings section should be visible", mainPage.isSectionVisible("Начинки"));
+        assertTrue("Fillings tab should be active", mainPage.isFillingsTabActive());
     }
 }

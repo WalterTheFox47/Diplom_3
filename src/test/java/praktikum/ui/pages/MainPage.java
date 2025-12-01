@@ -16,6 +16,8 @@ public class MainPage extends BasePage {
     private final By orderButton = By.xpath(".//button[contains(text(), 'Оформить заказ')]");
     private final By constructorHeader = By.xpath(".//h1[contains(text(), 'Соберите бургер')]");
 
+    private final String ACTIVE_CLASS = "tab_tab_type_current__2BEPc";
+
     public MainPage(WebDriver driver) {
         super(driver);
     }
@@ -28,37 +30,50 @@ public class MainPage extends BasePage {
 
     @Step("Click 'Buns' tab")
     public MainPage clickBunsTab() {
-        WebElement element = driver.findElement(bunsTab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         safeClick(bunsTab);
+        wait.until(ExpectedConditions.attributeContains(
+                driver.findElement(bunsTab),
+                "class",
+                ACTIVE_CLASS
+        ));
         return this;
     }
 
     @Step("Click 'Sauces' tab")
     public MainPage clickSaucesTab() {
-        WebElement element = driver.findElement(saucesTab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         safeClick(saucesTab);
+        wait.until(ExpectedConditions.attributeContains(
+                driver.findElement(saucesTab),
+                "class",
+                ACTIVE_CLASS
+        ));
         return this;
     }
 
     @Step("Click 'Fillings' tab")
     public MainPage clickFillingsTab() {
-        WebElement element = driver.findElement(fillingsTab);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
         safeClick(fillingsTab);
+        wait.until(ExpectedConditions.attributeContains(
+                driver.findElement(fillingsTab),
+                "class",
+                ACTIVE_CLASS
+        ));
         return this;
     }
 
-    @Step("Check if section '{sectionText}' is visible")
-    public boolean isSectionVisible(String sectionText) {
-        By sectionHeader = By.xpath("//h2[text()='" + sectionText + "']");
-        try {
-            wait.until(ExpectedConditions.visibilityOfElementLocated(sectionHeader));
-            return true;
-        } catch (TimeoutException e) {
-            return false;
-        }
+    @Step("Is buns tab active")
+    public boolean isBunsTabActive() {
+        return driver.findElement(bunsTab).getAttribute("class").contains(ACTIVE_CLASS);
+    }
+
+    @Step("Is sauce tab active")
+    public boolean isSaucesTabActive() {
+        return driver.findElement(saucesTab).getAttribute("class").contains(ACTIVE_CLASS);
+    }
+
+    @Step("Is fillings tab active")
+    public boolean isFillingsTabActive() {
+        return driver.findElement(fillingsTab).getAttribute("class").contains(ACTIVE_CLASS);
     }
 
     @Step("Check if order button is displayed")
