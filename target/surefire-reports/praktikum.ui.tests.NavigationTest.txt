@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: praktikum.ui.tests.NavigationTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 19.838 s <<< FAILURE! - in praktikum.ui.tests.NavigationTest
+transitionToPersonalAccountTest(praktikum.ui.tests.NavigationTest)  Time elapsed: 13.25 s  <<< FAILURE!
+java.lang.AssertionError: Should be on profile page
+	at praktikum.ui.tests.NavigationTest.transitionToPersonalAccountTest(NavigationTest.java:49)
+
